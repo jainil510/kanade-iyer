@@ -1,0 +1,25 @@
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap");
+
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+:root{
+  --paper:#F7F5F0;
+  --ink:#20242B;
+  --accent:#1B3A5C;
+  --confirm:#2E6B4F;
+
+  --step-display:clamp(2rem,5vw,3rem);
+  --step-title:1.4rem;
+  --step-body:1rem;
+  --step-label:0.85rem;
+  --leading-body:1.65;
+
+  --measure:65ch;
+
+  --space-1:0.5rem;
+  --space-2:1rem;
+  --space-3:1.5rem;
+  --space-4:2rem;
+  --space-5:3rem;
+  --space-6:4rem;
+}
