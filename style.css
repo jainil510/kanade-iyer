@@ -242,3 +242,109 @@
 @media(min-width:1024px){
   .fees{padding:var(--space-6)}
 }
+
+.contact{
+  background:var(--paper);
+  color:var(--ink);
+  padding:var(--space-6) var(--space-2);
+}
+
+.contact__title{
+  font-size:var(--step-title);
+  font-weight:600;
+  color:var(--accent);
+  margin-bottom:var(--space-4);
+  max-width:var(--measure);
+  margin-inline:auto;
+}
+
+.contact__intro{
+  font-size:var(--step-body);
+  line-height:var(--leading-body);
+  max-width:var(--measure);
+  margin-inline:auto;
+  margin-bottom:var(--space-5);
+}
+
+.contact__form{
+  max-width:var(--measure);
+  margin-inline:auto;
+}
+
+.contact__field{
+  display:flex;
+  flex-direction:column;
+  gap:var(--space-1);
+  margin-top:var(--space-4);
+}
+
+.contact__field label{
+  font-size:var(--step-label);
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+}
+
+.contact__field input,
+.contact__field select,
+.contact__field textarea{
+  font-size:var(--step-body);
+  font-family:inherit;
+  line-height:var(--leading-body);
+  padding:var(--space-2);
+  border:1px solid var(--ink);
+  border-radius:0;
+  background:transparent;
+  color:var(--ink);
+  width:100%;
+}
+
+.contact__field select{
+  cursor:pointer;
+}
+
+.contact__field textarea{
+  resize:vertical;
+  min-height:6rem;
+}
+
+.contact__field input:focus-visible,
+.contact__field select:focus-visible,
+.contact__field textarea:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:1px;
+}
+
+.contact__submit{
+  display:block;
+  width:100%;
+  margin-top:var(--space-5);
+  background:var(--accent);
+  color:var(--paper);
+  padding:var(--space-2) var(--space-3);
+  font-size:var(--step-body);
+  font-weight:500;
+  font-family:inherit;
+  border:none;
+  cursor:pointer;
+}
+
+.contact__submit:focus-visible{
+  outline:2px solid var(--accent);
+  outline-offset:2px;
+}
+
+.contact__submit:hover{
+  opacity:0.9;
+}
+
+@media(min-width:700px){
+  .contact{padding:var(--space-6) var(--space-4)}
+}
+
+@media(min-width:1024px){
+  .contact{padding:var(--space-6)}
+  .contact__submit{
+    width:auto;
+    display:inline-block;
+  }
+}
