@@ -328,6 +328,26 @@
   cursor:pointer;
 }
 
+.contact__error{
+  font-size:var(--step-label);
+  color:var(--accent);
+}
+
+.contact__field--error input,
+.contact__field--error select,
+.contact__field--error textarea{
+  border-color:var(--accent);
+}
+
+.contact__confirm{
+  font-size:var(--step-body);
+  line-height:var(--leading-body);
+  color:var(--confirm);
+  max-width:var(--measure);
+  margin-inline:auto;
+  margin-top:var(--space-5);
+}
+
 .contact__submit:focus-visible{
   outline:2px solid var(--accent);
   outline-offset:2px;
