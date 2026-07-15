@@ -15,3 +15,10 @@
 [index.html] Header inside main loses banner landmark | Minor | Accepted tradeoff for current page structure
 
 [style.css] Hover opacity not tokenized | Minor | Accepted as implementation detail, not design token concern
+[style.css] Hero CTA lacks focus-visible state | Minor | Added keyboard focus outline using existing tokens
+
+[style.css] Hero CTA tap target reviewed | Minor | Accepted current size after mobile verification
+
+[style.css] Hero text wrapping at desktop | Minor | Deferred, acceptable line breaks at current measure
+
+[style.css] Section boundaries visually subtle | Minor | Deferred until full page composition complete
