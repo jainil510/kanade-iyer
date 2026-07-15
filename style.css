@@ -209,3 +209,35 @@
     gap:var(--space-6);
   }
 }
+
+.fees{
+  background:var(--paper);
+  color:var(--ink);
+  padding:var(--space-6) var(--space-2);
+}
+
+.fees__title{
+  font-size:var(--step-label);
+  font-weight:500;
+  text-transform:uppercase;
+  letter-spacing:0.08em;
+  color:var(--accent);
+  max-width:var(--measure);
+  margin-inline:auto;
+}
+
+.fees__text{
+  font-size:var(--step-body);
+  line-height:var(--leading-body);
+  max-width:var(--measure);
+  margin-inline:auto;
+  margin-top:var(--space-3);
+}
+
+@media(min-width:700px){
+  .fees{padding:var(--space-6) var(--space-4)}
+}
+
+@media(min-width:1024px){
+  .fees{padding:var(--space-6)}
+}
