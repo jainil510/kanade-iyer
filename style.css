@@ -9,10 +9,11 @@
   --confirm:#2E6B4F;
 
   --step-display:clamp(2.5rem,6vw,4rem);
-  --step-title:1.4rem;
+  --step-title:1.6rem;
   --step-body:1rem;
   --step-label:0.85rem;
-  --leading-body:1.6;
+  --step-lead:1.1rem;
+  --leading-body:1.65;
 
   --measure:65ch;
 
@@ -39,7 +40,7 @@
   display:flex;
   flex-direction:column;
   gap:var(--space-1);
-  font-size:var(--step-label);
+  font-size:var(--step-body);
 }
 
 .nav__name{
@@ -181,7 +182,7 @@
 }
 
 .services__group-title{
-  font-size:var(--step-body);
+  font-size:var(--step-label);
   font-weight:600;
   margin-bottom:var(--space-3);
   text-transform:uppercase;
@@ -217,7 +218,7 @@
 
 @media(min-width:1024px){
   .services{padding:6rem var(--space-6)}
-  .services__title{margin-bottom:var(--space-5)}
+  .services__title{margin-bottom:var(--space-5);max-width:var(--grid-max)}
   .services__grid{max-width:var(--grid-max);grid-template-columns:1fr 1fr;gap:var(--space-6)}
 }
 
@@ -263,7 +264,7 @@
 }
 
 .credentials__person-name{
-  font-size:var(--step-body);
+  font-size:var(--step-lead);
   font-weight:600;
   color:var(--ink);
 }
@@ -288,7 +289,8 @@
 
 @media(min-width:1024px){
   .credentials{padding:6rem var(--space-6)}
-  .credentials__title{margin-bottom:var(--space-5)}
+  .credentials__title{margin-bottom:var(--space-5);max-width:var(--grid-max)}
+  .credentials__intro{max-width:var(--grid-max)}
   .credentials__bios{
     max-width:var(--grid-max);
     display:grid;
@@ -306,7 +308,7 @@
 
 .fees__title{
   font-size:var(--step-label);
-  font-weight:500;
+  font-weight:600;
   text-transform:uppercase;
   letter-spacing:0.08em;
   color:var(--ink);
@@ -338,6 +340,8 @@
 
 @media(min-width:1024px){
   .fees{padding:6rem var(--space-6)}
+  .fees__title{max-width:var(--grid-max)}
+  .fees__text{max-width:var(--grid-max)}
 }
 
 .contact{
@@ -473,7 +477,9 @@
 
 @media(min-width:1024px){
   .contact{padding:6rem var(--space-6)}
-  .contact__title{margin-bottom:var(--space-5)}
+  .contact__title{margin-bottom:var(--space-5);max-width:var(--grid-max)}
+  .contact__intro{max-width:var(--grid-max)}
+  .contact__form{max-width:var(--grid-max)}
   .contact__field{margin-top:var(--space-5)}
   .contact__submit{
     padding:var(--space-2) var(--space-4);
