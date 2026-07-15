@@ -311,7 +311,7 @@
 .contact__field select:focus-visible,
 .contact__field textarea:focus-visible{
   outline:2px solid var(--accent);
-  outline-offset:1px;
+  outline-offset:2px;
 }
 
 .contact__submit{
