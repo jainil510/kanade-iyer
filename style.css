@@ -23,8 +23,9 @@
   --space-5:3rem;
   --space-6:4rem;
 
-  --paper-alt:color-mix(in srgb,var(--paper),var(--ink) 3%);
+  --paper-alt:color-mix(in srgb,var(--paper),var(--ink) 5%);
   --muted:color-mix(in srgb,var(--ink),var(--paper) 35%);
+  --grid-max:56rem;
 }
 
 .nav{
@@ -140,13 +141,14 @@
 }
 
 @media(min-width:1024px){
-  .hero{padding:5rem var(--space-6)}
+  .hero{padding:6rem var(--space-6)}
 }
 
 .services{
   background:var(--paper-alt);
   color:var(--ink);
   padding:var(--space-6) var(--space-2);
+  border-top:1px solid color-mix(in srgb,var(--accent),var(--paper) 80%);
 }
 
 .services__title{
@@ -210,8 +212,9 @@
 }
 
 @media(min-width:1024px){
-  .services{padding:5rem var(--space-6)}
-  .services__grid{grid-template-columns:1fr 1fr;gap:var(--space-6)}
+  .services{padding:6rem var(--space-6)}
+  .services__title{margin-bottom:var(--space-5)}
+  .services__grid{max-width:var(--grid-max);grid-template-columns:1fr 1fr;gap:var(--space-6)}
 }
 
 .credentials{
@@ -280,8 +283,10 @@
 }
 
 @media(min-width:1024px){
-  .credentials{padding:5rem var(--space-6)}
+  .credentials{padding:6rem var(--space-6)}
+  .credentials__title{margin-bottom:var(--space-5)}
   .credentials__bios{
+    max-width:var(--grid-max);
     display:grid;
     grid-template-columns:1fr 1fr;
     gap:var(--space-6);
@@ -292,6 +297,7 @@
   background:var(--paper-alt);
   color:var(--ink);
   padding:var(--space-6) var(--space-2);
+  border-top:1px solid color-mix(in srgb,var(--accent),var(--paper) 80%);
 }
 
 .fees__title{
@@ -327,7 +333,7 @@
 }
 
 @media(min-width:1024px){
-  .fees{padding:5rem var(--space-6)}
+  .fees{padding:6rem var(--space-6)}
 }
 
 .contact{
@@ -462,7 +468,8 @@
 }
 
 @media(min-width:1024px){
-  .contact{padding:5rem var(--space-6)}
+  .contact{padding:6rem var(--space-6)}
+  .contact__title{margin-bottom:var(--space-5)}
   .contact__submit{
     width:auto;
     display:inline-block;
