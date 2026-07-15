@@ -222,6 +222,7 @@
   text-transform:uppercase;
   letter-spacing:0.08em;
   color:var(--accent);
+  margin-bottom:var(--space-4);
   max-width:var(--measure);
   margin-inline:auto;
 }
