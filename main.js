@@ -1,122 +1,266 @@
-const KanadeIyerForm = {
-  init() {
-    const form = document.querySelector('.contact__form');
-    if (!form) return;
-    form.addEventListener('submit', (e) => this.handleSubmit(e, form));
-  },
+(function () {
+  "use strict";
 
-  handleSubmit(e, form) {
-    e.preventDefault();
+  var prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-    const fields = {
-      name: form.querySelector('#contact-name'),
-      email: form.querySelector('#contact-email'),
-      phone: form.querySelector('#contact-phone'),
-      type: form.querySelector('#contact-type'),
-      message: form.querySelector('#contact-message'),
+  /* ---------- Scroll progress bar ---------- */
+  var progressBar = document.getElementById("scroll-progress");
+  var ticking = false;
+  function updateProgress() {
+    var doc = document.documentElement;
+    var scrollable = doc.scrollHeight - doc.clientHeight;
+    var pct = scrollable > 0 ? (doc.scrollTop / scrollable) * 100 : 0;
+    if (progressBar) progressBar.style.width = pct + "%";
+    ticking = false;
+  }
+  function onScroll() {
+    if (!ticking) {
+      window.requestAnimationFrame(updateProgress);
+      ticking = true;
+    }
+  }
+  if (progressBar) {
+    updateProgress();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    window.addEventListener("resize", onScroll);
+  }
+
+  /* ---------- Sticky header shadow ---------- */
+  var header = document.getElementById("site-header");
+  if (header) {
+    var toggleHeader = function () {
+      header.classList.toggle("scrolled", window.scrollY > 8);
+    };
+    toggleHeader();
+    window.addEventListener("scroll", toggleHeader, { passive: true });
+  }
+
+  /* ---------- Section reveal on scroll ---------- */
+  var revealEls = document.querySelectorAll(".reveal");
+  if (revealEls.length && !prefersReducedMotion && "IntersectionObserver" in window) {
+    var revealObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("in-view");
+            revealObserver.unobserve(entry.target);
+          }
+        });
+      },
+      { threshold: 0.15, rootMargin: "0px 0px -40px 0px" }
+    );
+    revealEls.forEach(function (el) { revealObserver.observe(el); });
+  } else {
+    revealEls.forEach(function (el) { el.classList.add("in-view"); });
+  }
+
+  /* ---------- Hero ampersand line-draw ---------- */
+  var amp = document.getElementById("amp-glyph");
+  if (amp) {
+    window.requestAnimationFrame(function () {
+      setTimeout(function () { amp.classList.add("drawn"); }, 150);
+    });
+  }
+
+  /* ---------- Rail nav active-section tracking ---------- */
+  var railLinks = document.querySelectorAll("#rail-nav a");
+  if (railLinks.length && "IntersectionObserver" in window) {
+    var sectionIds = ["hero", "services", "why", "fees", "contact"];
+    var sections = sectionIds
+      .map(function (id) { return document.getElementById(id); })
+      .filter(Boolean);
+
+    var railObserver = new IntersectionObserver(
+      function (entries) {
+        entries.forEach(function (entry) {
+          if (entry.isIntersecting) {
+            railLinks.forEach(function (link) {
+              var active = link.getAttribute("data-rail") === entry.target.id;
+              link.classList.toggle("active", active);
+              if(active){link.setAttribute("aria-current","location");}else{link.removeAttribute("aria-current");}
+            });
+          }
+        });
+      },
+      { rootMargin: "-45% 0px -45% 0px" }
+    );
+    sections.forEach(function (s) { railObserver.observe(s); });
+  }
+
+  /* ---------- Credential count-up ---------- */
+  var credentials = document.getElementById("credentials");
+  if (credentials) {
+    var figures = credentials.querySelectorAll(".credential-figure[data-count-to]");
+    var runCountUp = function () {
+      figures.forEach(function (figure) {
+        var target = parseInt(figure.getAttribute("data-count-to"), 10);
+        var suffix = figure.getAttribute("data-suffix") || "";
+        if (prefersReducedMotion) {
+          figure.textContent = target + suffix;
+          return;
+        }
+        var start = 0;
+        var duration = 900;
+        var startTime = null;
+        function step(timestamp) {
+          if (startTime === null) startTime = timestamp;
+          var progress = Math.min((timestamp - startTime) / duration, 1);
+          var eased = 1 - Math.pow(1 - progress, 3);
+          var value = Math.round(start + (target - start) * eased);
+          figure.textContent = value + suffix;
+          if (progress < 1) window.requestAnimationFrame(step);
+        }
+        window.requestAnimationFrame(step);
+      });
     };
 
-    if (!fields.name || !fields.email || !fields.type || !fields.message) return;
-
-    const errors = this.validate(fields);
-    this.renderErrors(fields, errors);
-
-    if (Object.keys(errors).length === 0) {
-      this.onSuccess(fields, form);
+    if ("IntersectionObserver" in window) {
+      var countObserver = new IntersectionObserver(
+        function (entries) {
+          entries.forEach(function (entry) {
+            if (entry.isIntersecting) {
+              runCountUp();
+              countObserver.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.4 }
+      );
+      countObserver.observe(credentials);
     } else {
-      this.focusFirstError(errors, fields);
+      runCountUp();
     }
-  },
+  }
 
-  validate(fields) {
-    const errors = {};
+  /* ---------- Enquiry form ---------- */
+  var form = document.getElementById("enquiry-form");
+  if (!form) return;
 
-    const name = (fields.name.value || '').trim();
-    if (!name) {
-      errors.name = 'Enter your name';
-    } else if (name.length > 100) {
-      errors.name = 'Name must be under 100 characters';
-    }
+  var confirmEl = document.getElementById("form-confirm");
+  var submitBtn = form.querySelector('button[type="submit"]');
+  var submitting = false;
 
-    const email = (fields.email.value || '').trim();
-    if (!email) {
-      errors.email = 'Enter your email address';
-    } else if (!this.isValidEmail(email)) {
-      errors.email = 'Enter a valid email \u2014 e.g. name@firm.in';
-    }
-
-    const phone = (fields.phone.value || '').trim();
-    if (phone && !this.isValidPhone(phone)) {
-      errors.phone = 'Enter a valid phone number';
-    }
-
-    if (!fields.type.value) {
-      errors.type = 'Select whether you are an individual or a business';
-    }
-
-    const message = (fields.message.value || '').trim();
-    if (!message) {
-      errors.message = 'Enter your message';
-    } else if (message.length > 2000) {
-      errors.message = 'Message must be under 2,000 characters';
-    }
-
-    return errors;
-  },
-
-  isValidEmail(email) {
-    return /^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email);
-  },
-
-  isValidPhone(phone) {
-    return /^[\d\s+\-()]{7,20}$/.test(phone);
-  },
-
-  renderErrors(fields, errors) {
-    document.querySelectorAll('.contact__field--error').forEach((el) => {
-      el.classList.remove('contact__field--error');
-    });
-
-    document.querySelectorAll('.contact__error').forEach((el) => {
-      el.textContent = '';
-    });
-
-    Object.keys(errors).forEach((key) => {
-      const field = fields[key];
-      if (!field) return;
-      const wrapper = field.closest('.contact__field');
-      if (!wrapper) return;
-      wrapper.classList.add('contact__field--error');
-      const errorEl = wrapper.querySelector('.contact__error');
-      if (errorEl) errorEl.textContent = errors[key];
-    });
-  },
-
-  focusFirstError(errors, fields) {
-    const order = ['name', 'email', 'type', 'message', 'phone'];
-    for (const key of order) {
-      if (errors[key] && fields[key]) {
-        fields[key].focus();
-        break;
+  var fields = {
+    name: {
+      input: document.getElementById("f-name"),
+      error: document.getElementById("err-name"),
+      wrap: document.getElementById("f-name").closest(".field"),
+      validate: function (v) {
+        return v.trim().length > 0 ? "" : "Enter your name.";
+      }
+    },
+    email: {
+      input: document.getElementById("f-email"),
+      error: document.getElementById("err-email"),
+      wrap: document.getElementById("f-email").closest(".field"),
+      validate: function (v) {
+        if (v.trim().length === 0) return "Enter your email address.";
+        var pattern = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+        return pattern.test(v.trim()) ? "" : "Enter a valid email address.";
+      }
+    },
+    phone: {
+      input: document.getElementById("f-phone"),
+      error: document.getElementById("err-phone"),
+      wrap: document.getElementById("f-phone").closest(".field"),
+      validate: function (v) {
+        if (v.trim().length === 0) return ""; // optional
+        var pattern = /^[0-9+\-\s()]{7,15}$/;
+        return pattern.test(v.trim()) ? "" : "Enter a valid phone number.";
+      }
+    },
+    message: {
+      input: document.getElementById("f-message"),
+      error: document.getElementById("err-message"),
+      wrap: document.getElementById("f-message").closest(".field"),
+      validate: function (v) {
+        return v.trim().length > 0 ? "" : "Add a short message so we know how to help.";
       }
     }
-  },
+  };
 
-  onSuccess(fields, form) {
-    const payload = {
-      name: fields.name.value.trim(),
-      email: fields.email.value.trim(),
-      phone: fields.phone.value.trim(),
-      type: fields.type.value,
-      message: fields.message.value.trim(),
+  var audienceError = document.getElementById("err-audience");
+  var audienceInputs = form.querySelectorAll('input[name="audience"]');
+
+  function setFieldError(field, message) {
+    field.error.textContent = message;
+    if (message) {
+      field.wrap.classList.add("has-error");
+      field.input.setAttribute("aria-invalid", "true");
+    } else {
+      field.wrap.classList.remove("has-error");
+      field.input.removeAttribute("aria-invalid");
+    }
+  }
+
+  function validateAudience() {
+    var checked = false;
+    audienceInputs.forEach(function (r) {
+      if (r.checked) checked = true;
+    });
+    audienceError.textContent = checked ? "" : "Let us know if you are a business or an individual.";
+    return checked;
+  }
+
+  Object.keys(fields).forEach(function (key) {
+    var field = fields[key];
+    field.input.addEventListener("input", function () {
+      var message = field.validate(field.input.value);
+      setFieldError(field, message);
+    });
+  });
+
+  audienceInputs.forEach(function (r) {
+    r.addEventListener("change", validateAudience);
+  });
+
+  form.addEventListener("submit", function (event) {
+    event.preventDefault();
+    if(submitting) return;
+    submitting = true;
+    submitBtn.disabled = true;
+    submitBtn.textContent = "Sending…";
+    confirmEl.textContent = "";
+
+    var firstInvalid = null;
+
+    Object.keys(fields).forEach(function (key) {
+      var field = fields[key];
+      var message = field.validate(field.input.value);
+      setFieldError(field, message);
+      if (message && !firstInvalid) firstInvalid = field.input;
+    });
+
+    var audienceOk = validateAudience();
+    if (!audienceOk && !firstInvalid) {
+      firstInvalid = audienceInputs[0];
+    }
+
+    if (firstInvalid) {
+      firstInvalid.focus();
+      return;
+    }
+
+    // No backend on this engagement — log the payload instead.
+    var payload = {
+      name: fields.name.input.value.trim(),
+      email: fields.email.input.value.trim(),
+      phone: fields.phone.input.value.trim(),
+      audience: form.querySelector('input[name="audience"]:checked').value,
+      message: fields.message.input.value.trim(),
+      submittedAt: new Date().toISOString()
     };
-    console.log(payload);
+    console.log("Enquiry received:", payload);
 
-    const msg = document.createElement('p');
-    msg.className = 'contact__confirm';
-    msg.textContent = 'Thank you. We respond within one working day.';
-    form.replaceWith(msg);
-  },
-};
-
-document.addEventListener('DOMContentLoaded', () => KanadeIyerForm.init());
+    confirmEl.textContent = "Your enquiry has been received. We respond within one working day.";
+    form.reset();
+    Object.keys(fields).forEach(function (key) {
+      setFieldError(fields[key], "");
+    });
+    audienceError.textContent = "";
+    confirmEl.focus();
+    submitting = false;
+    submitBtn.disabled = false;
+    submitBtn.textContent = submitBtn.dataset.defaultLabel || "Send enquiry";
+  });
+})();

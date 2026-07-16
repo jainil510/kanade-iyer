@@ -1,124 +1,240 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Kanade &amp; Iyer — Chartered Accountants</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Kanade &amp; Iyer, Chartered Accountants — Aundh, Pune</title>
+<meta name="description" content="Kanade & Iyer, Chartered Accountants. Fifteen years of measured tax, GST, and compliance advice for businesses and individuals in Pune.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:ital,wght@0,400;0,500;0,600;1,400&display=swap" rel="stylesheet">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.8em' font-size='90'%3E%26%3C/text%3E%3C/svg%3E">
+<meta property="og:title" content="Kanade &amp; Iyer, Chartered Accountants">
+<meta property="og:description" content="Measured advice, in order. Tax, GST and compliance support in Pune.">
+<meta name="twitter:card" content="summary">
+<script type="application/ld+json">{"@context":"https://schema.org","@type":"AccountingService","name":"Kanade & Iyer, Chartered Accountants","address":{"@type":"PostalAddress","addressLocality":"Pune","addressRegion":"Maharashtra","addressCountry":"IN"}}</script>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <main>
-    <header>
-      <nav class="nav">
-        <span class="nav__name">Kanade &amp; Iyer</span>
-        <div class="nav__links">
-          <a href="#services">Services</a>
-          <a href="#credentials">Why this firm</a>
-          <a href="#fees">Fees</a>
-          <a href="#contact">Contact</a>
-        </div>
-      </nav>
-    <div class="hero">
-    <div class="hero__content">
-      <h1>Kanade &amp; Iyer</h1>
-      <p class="hero__label">Chartered Accountants</p>
-      <p class="hero__positioning">Measured advice, in order — for businesses and individuals across Pune.</p>
-      <a class="hero__cta" href="#contact">Book a consultation</a>
-    </div>
-    </div>
-    </header>
 
-    <section class="services" id="services">
-      <h2 class="services__title">Services</h2>
-      <div class="services__grid">
-        <div class="services__group">
-          <h3 class="services__group-title">For Businesses</h3>
-          <ul class="services__list">
-            <li>GST registration and monthly filings</li>
+<div class="scroll-progress" id="scroll-progress" aria-hidden="true"></div>
+
+<a class="skip-link" href="#main">Skip to content</a>
+
+<header class="site-header" id="site-header">
+  <div class="wrap header-row">
+    <p class="mark">
+      <span class="mark-name">KANADE &amp; IYER</span>
+      <span class="mark-sub">Chartered Accountants</span>
+    </p>
+    <nav class="site-nav" aria-label="Page sections">
+      <a href="#services">Services</a>
+      <a href="#why">Why us</a>
+      <a href="#fees">Fees</a>
+      <a class="nav-cta" href="#contact">Book a consultation</a>
+    </nav>
+  </div>
+</header>
+
+<nav class="rail-nav" aria-label="Section progress" id="rail-nav">
+  <a href="#hero" data-rail="hero" aria-label="Home"><span></span></a>
+  <a href="#services" data-rail="services" aria-label="Services"><span></span></a>
+  <a href="#why" data-rail="why" aria-label="Why this firm"><span></span></a>
+  <a href="#fees" data-rail="fees" aria-label="Fees"><span></span></a>
+  <a href="#contact" data-rail="contact" aria-label="Contact"><span></span></a>
+</nav>
+
+<main id="main">
+
+  <!-- 1. HERO -->
+  <section class="hero" id="hero">
+    <div class="wrap hero-grid">
+      <div class="hero-copy reveal">
+        <p class="eyebrow">Chartered Accountants &middot; Aundh, Pune</p>
+        <h1>Measured advice,<br>in order.</h1>
+        <p class="hero-line">Fifteen years of tax, GST, and compliance advice for businesses and individuals across Pune &mdash; handled personally, by the two partners who sign their name to it.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#contact">Book a consultation</a>
+          <a class="btn btn-ghost" href="#why">Why this firm &#8594;</a>
+        </div>
+        <dl class="hero-trust">
+          <div><dt>15</dt><dd>Years in practice</dd></div>
+          <div><dt>400+</dt><dd>Clients served</dd></div>
+          <div><dt>ICAI</dt><dd>Membership</dd></div>
+        </dl>
+      </div>
+      <div class="hero-mark" aria-hidden="true">
+        <p class="hero-vertical">Measured advice &mdash; in order</p>
+        <svg viewBox="0 0 440 440" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="220" cy="220" r="216" class="hero-ring" />
+          <text x="50%" y="59%" text-anchor="middle" class="amp-glyph" id="amp-glyph">&amp;</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2. SERVICES -->
+  <section class="services" id="services" aria-labelledby="services-title">
+    <div class="wrap">
+      <p class="eyebrow reveal">What we handle</p>
+      <h2 id="services-title" class="section-title reveal">Services, clearly separated</h2>
+      <div class="services-grid">
+
+        <div class="service-col reveal">
+          <div class="col-head">
+            <h3 class="col-title">For businesses</h3>
+            <p class="col-sub">GST, compliance, bookkeeping</p>
+          </div>
+          <ul class="service-list">
+            <li>GST registration and monthly filing</li>
             <li>TDS compliance</li>
             <li>Company incorporation support</li>
             <li>Bookkeeping and annual audit</li>
           </ul>
         </div>
-        <div class="services__group">
-          <h3 class="services__group-title">For Individuals</h3>
-          <ul class="services__list">
+
+        <div class="service-col reveal">
+          <div class="col-head">
+            <h3 class="col-title">For individuals</h3>
+            <p class="col-sub">ITR filing, tax planning</p>
+          </div>
+          <ul class="service-list">
             <li>ITR filing for salaried professionals</li>
             <li>Capital gains computation</li>
             <li>Advance tax planning</li>
             <li>NRI taxation and notice handling</li>
           </ul>
         </div>
+
       </div>
-    </section>
-
-    <section class="credentials" id="credentials">
-      <h2 class="credentials__title">Why this firm</h2>
-      <p class="credentials__intro">Fifteen years in practice, serving more than four hundred clients across Pune. The firm is a member of the Institute of Chartered Accountants of India, with expertise spanning business and individual taxation.</p>
-      <div class="credentials__bios">
-        <div class="credentials__person">
-          <h3 class="credentials__person-name">Sudhir Kanade</h3>
-          <p class="credentials__person-label">Partner</p>
-          <p class="credentials__person-bio">Business taxation and audit specialist, advising companies on GST, TDS, and annual compliance.</p>
-        </div>
-        <div class="credentials__person">
-          <h3 class="credentials__person-name">Lakshmi Iyer</h3>
-          <p class="credentials__person-label">Partner</p>
-          <p class="credentials__person-bio">Individual taxation, capital gains, NRI matters, and tax planning specialist.</p>
-        </div>
-      </div>
-    </section>
-
-    <section class="fees" id="fees">
-      <h2 class="fees__title">Fees</h2>
-      <p class="fees__text">Individual tax engagements begin from ₹2,500.</p>
-      <p class="fees__text">Business retainers are scoped following an initial consultation.</p>
-    </section>
-
-    <section class="contact" id="contact">
-      <h2 class="contact__title">Contact</h2>
-      <p class="contact__intro">Describe your tax or accounting needs and we will outline how we can help.</p>
-      <form class="contact__form" method="post">
-        <div class="contact__field">
-          <label for="contact-name">Name</label>
-          <input type="text" id="contact-name" name="name" required>
-          <p class="contact__error" role="alert"></p>
-        </div>
-        <div class="contact__field">
-          <label for="contact-email">Email <span class="contact__required" aria-hidden="true">*</span></label>
-          <input type="email" id="contact-email" name="email" required>
-          <p class="contact__error" role="alert"></p>
-        </div>
-        <div class="contact__field">
-          <label for="contact-phone">Phone number</label>
-          <input type="tel" id="contact-phone" name="phone">
-          <p class="contact__error" role="alert"></p>
-        </div>
-        <div class="contact__field">
-          <label for="contact-type">I am a…</label>
-          <select id="contact-type" name="type" required>
-            <option value="" disabled hidden>Select one</option>
-            <option value="individual">Individual</option>
-            <option value="business">Business</option>
-          </select>
-          <p class="contact__error" role="alert"></p>
-        </div>
-        <div class="contact__field">
-          <label for="contact-message">Message</label>
-          <textarea id="contact-message" name="message" rows="4" required></textarea>
-          <p class="contact__error" role="alert"></p>
-        </div>
-        <button class="contact__submit" type="submit">Request a consultation</button>
-      </form>
-    </section>
-  </main>
-  <footer class="site-footer">
-    <div class="site-footer__content">
-      <span class="site-footer__name">Kanade &amp; Iyer</span>
-      <span class="site-footer__label">Chartered Accountants</span>
-      <span class="site-footer__meta">ICAI registered &middot; Aundh, Pune</span>
     </div>
-  </footer>
+  </section>
+
+  <!-- 3. WHY THIS FIRM -->
+  <section class="why" id="why" aria-labelledby="why-title">
+    <div class="wrap">
+      <p class="eyebrow reveal">Why this firm</p>
+      <h2 id="why-title" class="section-title reveal">Fifteen years, two partners, no hand-offs</h2>
+      <p class="why-lead reveal">Built on referrals rather than advertising. Close to 400 clients, each engagement reviewed personally by one of the two partners.</p>
+
+      <div class="partners-grid reveal">
+        <div class="partner">
+          <div class="partner-badge" aria-hidden="true">SK</div>
+          <div class="partner-info">
+            <p class="partner-name">Sudhir Kanade</p>
+            <p class="partner-role">Business taxation and audit</p>
+          </div>
+        </div>
+        <div class="partner">
+          <div class="partner-badge" aria-hidden="true">LI</div>
+          <div class="partner-info">
+            <p class="partner-name">Lakshmi Iyer</p>
+            <p class="partner-role">Individual taxation, capital gains, and NRI matters</p>
+          </div>
+        </div>
+      </div>
+
+      <dl class="credentials reveal" id="credentials">
+        <div>
+          <dt class="credential-figure" data-count-to="15" data-suffix="">0</dt>
+          <dd class="credential-label">Years in practice</dd>
+        </div>
+        <div>
+          <dt class="credential-figure" data-count-to="400" data-suffix="+">0</dt>
+          <dd class="credential-label">Clients served</dd>
+        </div>
+        <div>
+          <dt class="credential-figure credential-figure-text">ICAI</dt>
+          <dd class="credential-label">Membership</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <!-- 4. FEES NOTE -->
+  <section class="fees" id="fees" aria-labelledby="fees-title">
+    <div class="wrap">
+      <div class="fees-card reveal">
+        <p class="eyebrow">Fees, plainly</p>
+        <p class="fees-line">Engagements from &#8377;2,500 for individual filings. Business retainers are scoped after a first conversation.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- 5. CONTACT -->
+  <section class="contact" id="contact" aria-labelledby="contact-title">
+    <div class="wrap">
+      <p class="eyebrow reveal">Get in touch</p>
+      <h2 id="contact-title" class="section-title reveal">Send an enquiry</h2>
+      <p class="contact-lead reveal">We respond within one working day.</p>
+
+      <form id="enquiry-form" class="reveal" novalidate>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="f-name">Name</label>
+            <input type="text" id="f-name" aria-describedby="err-name" name="name" autocomplete="name">
+            <p class="field-error" id="err-name" role="alert"></p>
+          </div>
+
+          <div class="field">
+            <label for="f-email">Email</label>
+            <input type="email" id="f-email" aria-describedby="err-email" name="email" autocomplete="email">
+            <p class="field-error" id="err-email" role="alert"></p>
+          </div>
+        </div>
+
+        <div class="form-row">
+          <div class="field">
+            <label for="f-phone">Phone <span class="optional">(optional)</span></label>
+            <input type="tel" id="f-phone" aria-describedby="err-phone" name="phone" autocomplete="tel">
+            <p class="field-error" id="err-phone" role="alert"></p>
+          </div>
+
+          <fieldset class="field field-group">
+            <legend>I am a&hellip;</legend>
+            <div class="radio-row">
+              <label class="radio-option">
+                <input type="radio" name="audience" value="business">
+                <span>Business</span>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="audience" value="individual">
+                <span>Individual</span>
+              </label>
+            </div>
+            <p class="field-error" id="err-audience" role="alert"></p>
+          </fieldset>
+        </div>
+
+        <div class="field">
+          <label for="f-message">Message</label>
+          <textarea id="f-message" aria-describedby="err-message" name="message" rows="4"></textarea>
+          <p class="field-error" id="err-message" role="alert"></p>
+        </div>
+
+        <button type="submit" class="btn btn-primary" data-default-label="Send enquiry">Send enquiry</button>
+
+        <p class="form-flow" aria-hidden="true">First conversation &#8594; scoped engagement &#8594; ongoing filing</p>
+
+        <p class="form-confirm" id="form-confirm" role="status" aria-live="polite" tabindex="-1"></p>
+      </form>
+    </div>
+  </section>
+
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-row">
+    <div>
+      <p class="mark-name small">KANADE &amp; IYER</p>
+      <p class="footer-line">Chartered Accountants &middot; Aundh, Pune</p>
+    </div>
+    <p class="footer-motto">Measured advice, in order.</p>
+    <a class="back-to-top" href="#main">Back to top &#8593;</a>
+  </div>
+</footer>
+
 <script src="main.js"></script>
 </body>
 </html>
